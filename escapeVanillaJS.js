@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     document.getElementById("solveRoom2").addEventListener("click", () => {
-        const jsConcepts = new Set(['closure', 'scope', 'hoisting']);
+        const jsConcepts = new Set(['closure', 'scope', 'hoisting', 'async']);
         // 🪲 Bug: What's mssing from JS concepts?
         const reactConcepts = new Set(['components', 'jsx', 'hooks', 'async']);
         // 🪲 Bug: Incorrect function call
@@ -33,9 +33,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function findMostRecentBook(books) {
     // 🪲 Bug: Logic error
-    if (new Date(book.published) < new Date(mostRecent.published)) 
-    return books.reduce((mostRecent, book) => new Date(book.published) < new Date(mostRecent.published) ? book : mostRecent);
-}
+    return books.reduce((mostRecent, book) => new Date(book.published) < Date(mostRecent.published) ? book : mostRecent);
+}console.log(findMostRecentBook())
 
 function findIntersection(setA, setB) {
     // 🪲 Bug: Incorrect logic
@@ -45,10 +44,30 @@ function findIntersection(setA, setB) {
 
 async function navigateLabyrinth(directions) {
     for (let direction of directions) {
-        // 🪲 Bug: No delay
         await new Promise(resolve => setTimeout(resolve, 1000));
         console.log(`Navigating: ${direction.step}`);
     }
     return "Congratulations! You've mastered the essentials of Vanilla JavaScript. Welcome to the world of React, where you'll build powerful and dynamic web applications. Let's dive in!";
 }
 
+
+// 
+
+/*
+#### Debugging Tasks
+// DONE
+1. **Correct the ID used in the event listener for Room 1.** DONE
+2. **Use the correct element ID when displaying results for Room 1.** DONE
+3. **Add the missing 'async' keyword to the JS concepts set.** DONE
+4. **Correct the function call to find the intersection of `jsConcepts` and `reactConcepts` for Room 2.** DONE
+7. **Fix the `findIntersection` function to correctly determine the intersection of two sets.** DONE DONE
+8. **Add the `await` keyword before `new Promise` in `navigateLabyrinth` to ensure the simulation of asynchronous operations works as intended.** DONE
+5. **Ensure asynchronous operations are handled correctly in Room 3, particularly by adding `await` before the promise in `navigateLabyrinth`.** DONE
+
+//NOT YET
+
+
+6. **Adjust the `findMostRecentBook` function to correctly compare dates and find the most recent book.**
+
+
+*/
