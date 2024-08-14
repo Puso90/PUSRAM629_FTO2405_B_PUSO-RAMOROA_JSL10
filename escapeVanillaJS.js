@@ -34,12 +34,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function findMostRecentBook(books) {
     // 🪲 Bug: Logic error
-    return books.reduce((mostRecent, book) => new Date(book.published) < Date(mostRecent.published) ? book : mostRecent);
-}console.log(findMostRecentBook())
+    return books.reduce((mostRecent, book) => new Date(mostRecent.published < new Date(book.published)) ? book : mostRecent);
+}
 
 function findIntersection(setA, setB) {
     // 🪲 Bug: Incorrect logic
-    const intersection = new Set([...setA].filter(x => setB.has(x)));
+    const intersection = new Set([...setA].filter(x => setB.has(x))); // SEE REFERENCE BELOW
     console.log(intersection);
 
     return intersection;
@@ -79,8 +79,6 @@ async function navigateLabyrinth(directions) {
 
     REFERENCE FOR FILTER() METHOD
     1. https://www.geeksforgeeks.org/how-to-perform-intersection-of-two-sets-in-javascript/
-
-
 
 */
 //____________________________________________________________________________________________________________________________________________________________________________________________________
